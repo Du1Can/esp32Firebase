@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:senesp32/pages/cards.dart';
+import 'package:senesp32/pages/grafica.dart';
 import 'package:senesp32/pages/home.dart';
+import 'package:senesp32/pages/listdata.dart';
 
 class Start extends StatefulWidget{ //En un stateful widget, es decir, uno que cambia de estado, es neesario hacer dos clases.
   @override
@@ -11,7 +14,9 @@ class _MyState extends State<Start>{ //Crea una clase del estado de la clase pad
   int _selectedIndex = 0;
   final List<Widget> _pages = [
     Home(),
-    Home(),
+    Cards(),
+    Listdata(),
+    Grafica()
   ]; //Lista de páginas constante en tiempo de compilación.
   @override
   Widget build(BuildContext context) {
@@ -38,7 +43,15 @@ class _MyState extends State<Start>{ //Crea una clase del estado de la clase pad
             ),
             BottomNavigationBarItem(
                 icon: Icon(Icons.list),
-                label: 'Datos'
+                label: 'Cards'
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.list),
+                label: 'Datos2'
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.auto_graph),
+                label: 'Grafica'
             ),
           ]
       ),

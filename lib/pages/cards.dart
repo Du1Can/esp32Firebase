@@ -1,6 +1,6 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../datatype/data.dart';
 
@@ -28,10 +28,9 @@ class Cards extends StatelessWidget{
            var climacard = snapshot.data!.docs.map((doc){
              var data = doc.data() as Map<String, dynamic>;
              return Data(
-               data['uID']=doc.id,
-               data['fecha']??"", //sino no tiene datos pone ""
-               data['humedad']??"",
-               data['temperatura']??"",
+               (data['fecha'] as Timestamp).toDate(),
+               (data['humedad']).toDouble(),
+               (data['temperatura']).toDouble(),
              );
 
            }).toList();
@@ -47,12 +46,12 @@ class Cards extends StatelessWidget{
                   ),
                   child: ListTile(
                     contentPadding: EdgeInsets.all(15),
-                    title: Text(varTH.fecha),
+                    title: Text(varTH.fecha.toString()),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Humedad: ${varTH.humedad}"),
-                        Text("Temperatura: ${varTH.temperatura}°C"),
+                        Text("Humedad: ${varTH.humedad.toStringAsFixed(1)}%"),
+                        Text("Temperatura: ${varTH.temperatura.toStringAsFixed(2)}°C"),
                       ],
                     ),
                   ),
@@ -63,5 +62,4 @@ class Cards extends StatelessWidget{
      ),
    );
   }
-
 }

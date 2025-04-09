@@ -1,11 +1,9 @@
 class Data{
-  final String uID;
-  late String fecha;
-  late int humedad;
+  late DateTime fecha;
+  late double humedad;
   late double temperatura;
 
   Data(
-      this.uID,
       this.fecha,
       this.humedad,
       this.temperatura,

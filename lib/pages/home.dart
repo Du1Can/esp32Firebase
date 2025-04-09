@@ -9,7 +9,7 @@ class Home extends StatelessWidget{
         title: Text("VARIABLES AMBIENTALES"),
       ),
       body: Center(
-        child: Image.asset("asset/clima.png"),
+        child: Image.asset("assets/clima.png"),
       ),
     );
   }
